@@ -28,7 +28,7 @@ function createGallery(images) {
 function onGalleryClick(event) {
 
     event.preventDefault();
-    
+
     const isGalleryImg = event.target.classList.contains('gallery__image');
 
         if (!isGalleryImg) {
@@ -41,7 +41,17 @@ function onGalleryClick(event) {
     <img src="${imgUrl}" width="800" height="600">
 `)
 
-instance.show()
+    instance.show()
+
+    window.addEventListener('keydown', onEscPress);
+
+    function onEscPress(event) {
+        if (event.code === 'Escape') { 
+        instance.close();
+        window.removeEventListener('keydown', onEscPress);
+    }
+    }
+    
 }
 
 
